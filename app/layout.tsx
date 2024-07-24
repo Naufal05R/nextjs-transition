@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-slate-50 text-slate-950`}>
+      <body className={`transition-all duration-500 ${inter.className} bg-slate-50 text-slate-950`}>
         <header className="w-full max-w-7xl mx-auto px-4 py-2 sm:px-8 sm:py-4 lg:px-16 lg:py-8">
           <Navbar />
         </header>
