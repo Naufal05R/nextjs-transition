@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 interface TransitionLinkInterface extends LinkProps {
   href: string;
   children: React.ReactNode;
+  className?: string;
 }
 
 function sleep(ms: number): Promise<void> {
@@ -15,11 +16,7 @@ function sleep(ms: number): Promise<void> {
   });
 }
 
-const TransitionLink = ({
-  href,
-  children,
-  ...props
-}: TransitionLinkInterface) => {
+const TransitionLink = ({ href, children, className }: TransitionLinkInterface) => {
   const router = useRouter();
 
   const handleTransition = async (
@@ -29,7 +26,7 @@ const TransitionLink = ({
 
     const body = document.querySelector("body");
 
-    body?.classList.add("opacity-0 bg-black translate-y-10 blur-md");
+    body?.classList.add("opacity-0", "bg-black", "translate-y-10", "blur-md");
 
     await sleep(500);
 
@@ -37,11 +34,16 @@ const TransitionLink = ({
 
     await sleep(500);
 
-    body?.classList.remove("opacity-0 bg-black translate-y-10 blur-md");
+    body?.classList.remove(
+      "opacity-0",
+      "bg-black",
+      "translate-y-10",
+      "blur-md"
+    );
   };
 
   return (
-    <Link onClick={handleTransition} href={href}>
+    <Link onClick={handleTransition} href={href} className={className}>
       {children}
     </Link>
   );
